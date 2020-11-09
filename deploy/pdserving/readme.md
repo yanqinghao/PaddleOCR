@@ -62,7 +62,7 @@ pip3.5 install func-timeout
 <a name="转换模型"></a>
 ## 2. 转换模型
 
-Paddle Serving无法直接用训练模型（checkpoints 模型）或推理模型（inference 模型）进行部署。Serving模型由两个文件夹构成，用于存放客户端和服务端的配置。本节介绍如何将推理模型转换为Paddle Serving可部署的模型。
+Paddle Serving无法直接用训练模型（checkpoints 模型）或推理模型（inference 模型）进行部署。Serving模型由两个文件夹构成，用于存放客户端和服务端的配置。本节介绍如何将推理模型转换为Paddle Serving可部署的模型。
 
 **以文本检测模型`ch_ppocr_mobile_v1.1_det_infer`为例，文本识别模型和方向分类器的转换同理。**
 
@@ -170,17 +170,17 @@ python det_local_server.py #快速版，Windows/Linux用户
 # 标准版，Linux用户
 # GPU用户
 # 启动检测服务
-python -m paddle_serving_server_gpu.serve --model inference/ch_ppocr_mobile_v1.1_det_infer/serving_server_dir/ --port 9293 --gpu_id 0
+python -m paddle_serving_server_gpu.serve --model ../../inference/ch_ppocr_mobile_v1.1_det_infer/serving_server_dir/ --port 9293 --gpu_id 0
 # 启动方向分类器服务
-python -m paddle_serving_server_gpu.serve --model inference/ch_ppocr_mobile_v1.1_cls_infer/serving_server_dir/ --port 9294 --gpu_id 0
+python -m paddle_serving_server_gpu.serve --model ../../inference/ch_ppocr_mobile_v1.1_cls_infer/serving_server_dir/ --port 9294 --gpu_id 0
 # 启动串联服务
 python ocr_rpc_server.py 
 
 # CPU用户
 # 启动检测服务
-python -m paddle_serving_server.serve --model inference/ch_ppocr_mobile_v1.1_det_infer/serving_server_dir/ --port 9293
+python -m paddle_serving_server.serve --model ../../inference/ch_ppocr_mobile_v1.1_det_infer/serving_server_dir/ --port 9293
 # 启动方向分类器服务
-python -m paddle_serving_server.serve --model ch_ppocr_mobile_v1.1_cls_infer/serving_server_dir/ --port 9294
+python -m paddle_serving_server.serve --model ../../inference/ch_ppocr_mobile_v1.1_cls_infer/serving_server_dir/ --port 9294
 # 启动串联服务
 python ocr_rpc_server.py
 
